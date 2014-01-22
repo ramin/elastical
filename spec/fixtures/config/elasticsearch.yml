@@ -1,0 +1,8 @@
+defaults: &DEFAULTS
+  host: "http://localhost:9200"
+
+development: &DEVELOPMENT
+  <<: *DEFAULTS
+
+test:
+  <<: *DEFAULTS

@@ -13,7 +13,7 @@ module Elastical
         end
 
         def recreate!
-          delete!
+          delete! if exists?
           create!
         end
 

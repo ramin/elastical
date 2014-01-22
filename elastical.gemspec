@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "stretcher", "~> 1.9"
 
   spec.add_development_dependency "activerecord", "~> 3.2"
+  spec.add_development_dependency "sqlite3"
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "codeclimate-test-reporter"
   spec.add_development_dependency "rake"

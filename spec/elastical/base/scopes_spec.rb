@@ -3,7 +3,6 @@ require 'spec_helper'
 describe Elastical::Base::Models do
   before do
     class WuTang2013Index < Elastical::Base
-      # Need ar here sorry
       indexes Post.live do
         field :title_without_tags, as: :title do |post|
           post.title_without_tags.reverse
@@ -12,8 +11,8 @@ describe Elastical::Base::Models do
     end
   end
 
-  let(:live_post)   { FactoryGirl.create(:post, status_code: 2) }
-  let(:queued_post) { FactoryGirl.create(:post, status_code: 4) }
+  let(:live_post)   { Post.create(status_code: 1) }
+  let(:queued_post) { Post.create(status_code: 4) }
 
   context 'testing scope' do
     it 'knows that a record is within index scope' do
