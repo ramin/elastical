@@ -1,6 +1,6 @@
-# ENV['CODECLIMATE_REPO_TOKEN'] = "551514de28251b0f6281a204446c3ffdbdda092590b76e531b7d224c11194769"
-# require "codeclimate-test-reporter"
-# CodeClimate::TestReporter.start
+ENV['CODECLIMATE_REPO_TOKEN'] = "beeb6dab3e0aeb52f0a2fded3d0208c054c5382ba2b562b493eb74a505a63773"
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
 
 require 'active_record'
 require 'active_support'
