@@ -26,13 +26,17 @@ module Elastical
     class << self
       def indexes(scope, options = {}, &block)
         klass = scope.respond_to?(:engine) ? scope.engine : scope
+        augment_and_add_callbacks(klass)
+        klass.indexed_by(inferred_index_name)
+        klass.instance_eval(&block)
+        setup(klass, options.merge(scope: scope) )
+      end
+
+      def augment_and_add_callbacks(klass)
         unless klass.respond_to?(:elastical?)
           klass.send(:include, Elastical::Model::Augmentations)
           klass.send(:include, Elastical::Model::Callbacks)
         end
-        klass.indexed_by(inferred_index_name)
-        klass.instance_eval(&block)
-        setup(klass, options.merge(scope: scope) )
       end
 
       def setup(klass, options)
