@@ -30,20 +30,11 @@ module Elastical
 
           # segments sizes
           divmod          = scope_for(model).call.count.divmod(segments)
-          segment_size    = divmod.first
           current_offset  = current_segment * divmod.first
           current_limit   = current_segment == (segments - 1) ?  divmod.sum : divmod.first
           start_id        = discover_offset(model, current_offset)
           max_id          = upper_bounds(model, current_offset, current_limit)
           table           = model.arel_table
-
-          if options[:verbose]
-            p "#{segments} segments"
-            p "#{current_segment} current_segment"
-            p "#{current_offset} current_offset"
-            p "#{current_limit} current_limit"
-            p "record ids from #{start_id} start id to #{max_id}"
-          end
 
           unless options[:dry]
             scope_for(model).call
