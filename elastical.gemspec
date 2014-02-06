@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Elastical::VERSION
   spec.authors       = ["ramin keene"]
   spec.email         = ["raminkeene@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = "add elastic search to your active record models"
+  spec.summary       = "add elastic search to your active record models"
   spec.homepage      = ""
   spec.license       = "MIT"
 
