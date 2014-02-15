@@ -13,7 +13,6 @@ module Elastical
 
         def default_mapping
           {
-            _all: { analyzer: "snowball" },
             properties: {}
           }
         end
