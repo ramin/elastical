@@ -20,9 +20,6 @@ module Elastical
     include Elastical::Base::Scopes
     include Elastical::Base::Segments
 
-    # This Doesn't Exist....yet!!!!
-    include Elastical::Query::Builders
-
     class << self
       def indexes(scope, options = {}, &block)
         klass = scope.respond_to?(:engine) ? scope.engine : scope

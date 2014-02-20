@@ -5,7 +5,11 @@ module Elastical
 
       module ClassMethods
         def create!
-          client.create(mappings: mappings)
+          client.create(mappings: mappings, settings: Elastical::Customizations::Analyzers.new)
+        end
+
+        def update!
+          create!
         end
 
         def delete!

@@ -21,7 +21,6 @@ describe Elastical::Base::Mappings do
   it 'should have mappings' do
 	WuTangForeverIndex.mappings.should == {
       ghostface: {
-        _all: { analyzer: "snowball" },
         properties: {
           albums:   { type: :array, store: true },
           mustache: { type: :string, index: 'no' },
