@@ -5,8 +5,7 @@ module Elastical
 
       module ClassMethods
         def create!
-          client.update_settings(Elastical::Customizations::Analyzers.new)
-          client.create(mappings: mappings)
+          client.create(settings: Elastical::Customizations::Analyzers.new.all, mappings: mappings )
         end
 
         def update!

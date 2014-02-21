@@ -3,10 +3,6 @@ module Elastical
     class Analyzers
       attr_reader :data
 
-      def[](key)
-        @data[key]
-      end
-
       def initialize
         @data = {
           analysis: {
@@ -18,6 +14,9 @@ module Elastical
             }
           }
         }
+      end
+
+      def all
         @data
       end
 
