@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "activesupport", "~> 3.2"
-  spec.add_dependency "stretcher", "~> 1.9"
+  spec.add_dependency "stretcher", "~> 1.19"
 
   spec.add_development_dependency "activerecord", "~> 3.2"
   spec.add_development_dependency "sqlite3"
