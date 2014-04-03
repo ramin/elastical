@@ -54,7 +54,7 @@ describe Elastical::Customizations::Analyzers do
 
     it 'expects a file at analysis/snonyms-strict.txt' do
       key = subject[:analysis][:filter]
-      expect(key[:synonym][:synonyms_path]).to eq("analysis/synonyms-strict.txt")
+      expect(key[:synonym][:synonyms_path]).to eq("analysis/synonyms.txt")
     end
   end
 end

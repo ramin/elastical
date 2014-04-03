@@ -33,7 +33,7 @@ module Elastical
       def synonym_filter
         {
           type: "synonym",
-          synonyms_path: "analysis/synonyms-strict.txt"
+          synonyms_path: "analysis/synonyms.txt"
         }
       end
 
