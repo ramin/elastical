@@ -7,10 +7,12 @@ module Elastical
         @data = {
           analysis: {
             analyzer: {
-              phraser: phraser
+              phraser: phraser,
+              synonym: synonyms
             },
             filter: {
-              custom_shingle: custom_shingle
+              custom_shingle: custom_shingle,
+              synonym: synonym_filter
             }
           }
         }
@@ -18,6 +20,21 @@ module Elastical
 
       def all
         @data
+      end
+
+      def synonyms
+        {
+          type: "custom",
+          tokenizer: "standard",
+          filter: ["lowercase", "stop", "synonym"]
+        }
+      end
+
+      def synonym_filter
+        {
+          type: "synonym",
+          synonyms_path: "analysis/synonyms-strict.txt"
+        }
       end
 
       def custom_shingle
