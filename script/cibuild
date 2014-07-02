@@ -1,0 +1,12 @@
+#!/bin/bash -e
+
+# setup
+export RUBY_GC_MALLOC_LIMIT=40000000
+export RACK_ENV=test
+export CODECLIMATE_REPO_TOKEN=beeb6dab3e0aeb52f0a2fded3d0208c054c5382ba2b562b493eb74a505a63773
+
+# build
+bundle install --jobs 8 --path vendor/bundle
+bundle exec rspec spec
+
+# finish

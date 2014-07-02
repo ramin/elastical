@@ -6,7 +6,7 @@ require 'active_record'
 require 'active_support'
 require 'rspec'
 require 'rspec/rails/mocks'
-include Spec::Rails::Mocks
+include RSpec::Rails::Mocks
 
 require 'elastical'
 

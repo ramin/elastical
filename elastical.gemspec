@@ -20,6 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "activesupport", "~> 4.0"
   spec.add_dependency "stretcher", "~> 1.21.0"
+  spec.add_dependency "faraday", "~> 0.8.0"
 
   spec.add_development_dependency "activerecord", "~> 4.0"
   spec.add_development_dependency "sqlite3"
