@@ -26,7 +26,7 @@ module Elastical
         {
           type: "custom",
           tokenizer: "standard",
-          filter: ["lowercase", "stop", "synonym"]
+          filter: ["snowball", "lowercase", "stop", "synonym"]
         }
       end
 
