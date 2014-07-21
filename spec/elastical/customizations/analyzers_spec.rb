@@ -49,7 +49,7 @@ describe Elastical::Customizations::Analyzers do
 
     it 'filters with lowercase stop and synonym' do
       key = subject[:analysis][:analyzer][:synonym]
-      expect(key[:filter]).to eq(["lowercase", "stop", "synonym"])
+      expect(key[:filter]).to eq(["snowball", "lowercase", "stop", "synonym"])
     end
 
     it 'expects a file at analysis/snonyms-strict.txt' do
