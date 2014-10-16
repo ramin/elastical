@@ -10,19 +10,21 @@ module Elastical
       end
 
       def elastical_update!
-        target_indexes{ |index| index.put(self) }
+        target_indexes(:put){ |index| index.put(self) }
       end
 
       def elastical_remove!
-        target_indexes{ |index| index.delete(self) }
+        target_indexes(:delete){ |index| index.delete(self) }
       end
 
       private
 
-      def target_indexes(&block)
+      def target_indexes(operation, &block)
         self.class.indexes.each do |index|
           target_index = "#{index}_index".camelize.constantize
-          if target_index.within_scope?(self)
+          if operation == :put
+            yield target_index if target_index.within_scope?(self)
+          else
             yield target_index
           end
         end

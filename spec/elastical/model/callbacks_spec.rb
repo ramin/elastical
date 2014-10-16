@@ -22,6 +22,8 @@ describe Elastical::Model::Callbacks do
   end
 
   context 'when a model is indexed' do
+    let(:within_scope?) { true }
+
     before do
       method_man = mock_model('MethodMan')
       MethodMan.any_instance.stub(:test)
@@ -35,12 +37,45 @@ describe Elastical::Model::Callbacks do
 
       MethodManIndex
         .stub_chain(:within_scope?)
-        .and_return(true)
+        .and_return(within_scope?)
     end
 
-    it 'yields the indexes from target_indexes' do
-      expect { |test| MethodMan.new.send(:target_indexes, &test) }
-        .to yield_with_args(MethodManIndex)
+    describe '#target_indexes' do
+      context 'indexing a document' do
+        context 'inside scope' do
+          it 'yields the indexes from target_indexes' do
+            expect { |test| MethodMan.new.send(:target_indexes, :put, &test) }
+              .to yield_with_args(MethodManIndex)
+          end
+        end
+
+        context 'outside of scope' do
+          let(:within_scope?) { false }
+
+          it 'yields the indexes from target_indexes' do
+            expect { |test| MethodMan.new.send(:target_indexes, :put, &test) }
+              .to_not yield_with_args(MethodManIndex)
+          end
+        end
+      end
+
+      context 'deleting a document' do
+        context 'inside scope' do
+          it 'yields the indexes from target_indexes' do
+            expect { |test| MethodMan.new.send(:target_indexes, :delete, &test) }
+              .to yield_with_args(MethodManIndex)
+          end
+        end
+
+        context 'outside_of_scope' do
+          let(:within_scope?) { false }
+
+          it 'yields the indexes from target_indexes' do
+            expect { |test| MethodMan.new.send(:target_indexes, :delete, &test) }
+              .to yield_with_args(MethodManIndex)
+          end
+        end
+      end
     end
 
     it 'should save and update elastical if saved' do
