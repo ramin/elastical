@@ -8,7 +8,9 @@ module Elastical
           analysis: {
             analyzer: {
               phraser: phraser,
-              synonym: synonyms
+              synonym: synonyms,
+              text: text
+
             },
             filter: {
               custom_shingle: custom_shingle,
@@ -20,6 +22,14 @@ module Elastical
 
       def all
         @data
+      end
+
+      def text
+        {
+          type: "custom",
+          tokenizer: "standard",
+          filter: ["snowball", "lowercase", "stop", "asciifolding"]
+        }
       end
 
       def synonyms
