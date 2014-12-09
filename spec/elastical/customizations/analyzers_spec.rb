@@ -57,4 +57,16 @@ describe Elastical::Customizations::Analyzers do
       expect(key[:synonym][:synonyms_path]).to eq("analysis/synonyms.txt")
     end
   end
+
+  context 'text' do
+    it 'defines the synonym analyzer' do
+      key = subject[:analysis][:analyzer]
+      expect(key[:text]).to eq(Elastical::Customizations::Analyzers.new.text)
+    end
+
+    it 'defines snowball, lowercase, stop, asciifoldering for analyzer' do
+      key = subject[:analysis][:analyzer]
+      expect(key[:text][:filter]).to eq(["snowball", "lowercase", "stop", "asciifolding"])
+    end
+  end
 end
